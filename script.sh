@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Jira BuildKite Test Script" 
+echo 
 # Jira configuration in order to create version and assign tickets that will be released to it.
 JIRA_PROJECT_ID=17612
 JIRA_URL=https://smartbear.atlassian.net
@@ -8,11 +10,13 @@ if [ -z ${JIRA_AUTH} ]; then
   exit 128
 fi
 
+echo "Getting Versions"
+echo 
 payload_version="{\"archived\":false,\"name\":\"${DEV_TAG::7}\",\"projectId\":${JIRA_PROJECT_ID},\"released\":false}"
 
 curl --request GET \
-   --url "$JIRA_URL/rest/api/3/version" \
+   --url "$JIRA_URL/rest/api/3/project/$JIRA_PROJECT_ID/versions" \
    --user "$JIRA_AUTH" \
    --header 'Accept: application/json' \
-   --header 'Content-Type: application/json' \
+   --header 'Content-Type: application/json' #\
    #--data "${payload_version}"
