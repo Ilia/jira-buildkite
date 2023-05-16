@@ -1,0 +1,5 @@
+steps:
+  - label: ":hammer: Jira Script"
+    command: "script.sh"
+    agents:
+      queue: "${BUILDKITE_AGENT_META_DATA_QUEUE:-default}"
