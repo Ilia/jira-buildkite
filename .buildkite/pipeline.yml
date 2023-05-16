@@ -1,5 +1,9 @@
+env:
+  AWS_DEFAULT_REGION: ap-southeast-2
+  ENVIRONMENT: dev
+
 steps:
   - label: ":hammer: Jira Script"
     command: "script.sh"
     agents:
-      queue: "${BUILDKITE_AGENT_META_DATA_QUEUE:-default}"
+      queue: pactflow-dev
