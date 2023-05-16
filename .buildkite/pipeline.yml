@@ -3,7 +3,9 @@ env:
   ENVIRONMENT: dev
 
 steps:
-  - label: ":hammer: Jira Script"
-    command: "script.sh"
+  - command: script.sh
+    label: ":hammer: Jira Script"
     agents:
       queue: pactflow-dev
+    env:
+      ENVIRONMENT: dev
