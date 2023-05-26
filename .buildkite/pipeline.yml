@@ -9,3 +9,4 @@ steps:
       queue: pactflow-dev
     env:
       ENVIRONMENT: dev
+      RELEASE_VERSION: cb88956
