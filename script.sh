@@ -18,20 +18,22 @@ if [ -z ${JIRA_VERSION_NAME} ]; then
   JIRA_VERSION_NAME=${RELEASE_VERSION}
 fi
 
-echo "Getting Versions" 
-JIRA_VERSION_ID=$(curl -s --request GET \
-   --url "$JIRA_URL/rest/api/3/project/$JIRA_PROJECT_ID/version?query=$JIRA_VERSION_NAME" \
-   --user "$JIRA_AUTH" \
-   --header 'Accept: application/json' \
-   --header 'Content-Type: application/json' | jq '.values[0].id' | tr -d '"')
+aws cli --version
 
-echo 
-echo "Updating Release for Version ID: $JIRA_VERSION_ID"
-
-payload_update="{\"released\":true,\"releaseDate\":\"$(date '+%Y-%m-%d')\"}"
-curl -s --request PUT \
-   --url "$JIRA_URL/rest/api/3/version/$JIRA_VERSION_ID" \
-   --user "$JIRA_AUTH" \
-   --header 'Accept: application/json' \
-   --header 'Content-Type: application/json' \
-   --data "${payload_update}"
+#echo "Getting Versions"
+#JIRA_VERSION_ID=$(curl -s --request GET \
+#   --url "$JIRA_URL/rest/api/3/project/$JIRA_PROJECT_ID/version?query=$JIRA_VERSION_NAME" \
+#   --user "$JIRA_AUTH" \
+#   --header 'Accept: application/json' \
+#   --header 'Content-Type: application/json' | jq '.values[0].id' | tr -d '"')
+#
+#echo
+#echo "Updating Release for Version ID: $JIRA_VERSION_ID"
+#
+#payload_update="{\"released\":true,\"releaseDate\":\"$(date '+%Y-%m-%d')\"}"
+#curl -s --request PUT \
+#   --url "$JIRA_URL/rest/api/3/version/$JIRA_VERSION_ID" \
+#   --user "$JIRA_AUTH" \
+#   --header 'Accept: application/json' \
+#   --header 'Content-Type: application/json' \
+#   --data "${payload_update}"
