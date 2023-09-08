@@ -18,7 +18,7 @@ if [ -z ${JIRA_VERSION_NAME} ]; then
   JIRA_VERSION_NAME=${RELEASE_VERSION}
 fi
 
-aws cli --version
+aws --version
 
 #echo "Getting Versions"
 #JIRA_VERSION_ID=$(curl -s --request GET \
